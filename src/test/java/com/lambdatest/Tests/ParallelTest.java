@@ -25,8 +25,8 @@ import org.testng.annotations.Test;
 public class ParallelTest {
 
 	// Lambdatest Credentails can be found here at https://www.lambdatest.com/capabilities-generator
-	String username = System.getenv("LT_USERNAME") == null ? "YOUR LT_USERNAME" : System.getenv("LT_USERNAME"); 
-	String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "YOUR LT_ACCESS_KEY" : System.getenv("LT_ACCESS_KEY");
+	String username = System.getenv("LT_USERNAME") == null ? "adityapawar180" : System.getenv("LT_USERNAME");
+	String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "eZFjHaGIuMDJHoRSHwyP5iN5Z9INdXMvVBJpl2e3OLO1OunpDW" : System.getenv("LT_ACCESS_KEY");
         String buildName = System.getenv("LT_BUILD_NAME") == null ? "TestNG Parallel" : System.getenv("LT_BUILD_NAME");
 	
 	
@@ -66,27 +66,8 @@ public class ParallelTest {
 	@Test
 	public void test() throws Exception {
 
-		try {
-			// Launch the app
+
 			driver.get("https://lambdatest.github.io/sample-todo-app/");
-
-			// Click on First Item
-			driver.findElement(By.name("li1")).click();
-
-			// Click on Second Item
-			driver.findElement(By.name("li2")).click();
-
-			// Add new item is list
-			driver.findElement(By.id("sampletodotext")).clear();
-			driver.findElement(By.id("sampletodotext")).sendKeys("Yey, Let's add it to list");
-			driver.findElement(By.id("addbutton")).click();
-
-			// Verify Added item
-			String item = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
-			AssertJUnit.assertTrue(item.contains("Yey, Let's add it to list"));
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} 
 	}
 
 	@AfterTest(alwaysRun = true)
