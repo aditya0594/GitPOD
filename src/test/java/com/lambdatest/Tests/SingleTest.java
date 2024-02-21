@@ -1,8 +1,11 @@
 package com.lambdatest.Tests;
 
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import java.net.URL;
+import java.util.HashMap;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -27,16 +30,17 @@ public class SingleTest {
 	@Parameters(value = { "browser", "version", "platform" })
 	public void setUp(String browser, String version, String platform) throws Exception {
 
-		DesiredCapabilities capability = new DesiredCapabilities();
-		capability.setCapability(CapabilityType.BROWSER_NAME, browser);
-		capability.setCapability(CapabilityType.VERSION, version);
-		capability.setCapability(CapabilityType.PLATFORM, platform);
-		capability.setCapability("build", "TestNG Single Test");
-		capability.setCapability("name", "TestNG Single");
-		capability.setCapability("network", true);
-		capability.setCapability("video", true);
-		capability.setCapability("console", true);
-		capability.setCapability("visual", true);
+		ChromeOptions browserOptions = new ChromeOptions();
+		browserOptions.setPlatformName("Windows 10");
+		browserOptions.setBrowserVersion("122.0");
+		HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+		ltOptions.put("username", "adityapawar180");
+		ltOptions.put("accessKey", "6wud0mTK0TXmhC7F76FfTNByrGdUNLIIRtZ5eG8Oww7xYOkPYl");
+		ltOptions.put("build", "Selenium java");
+		ltOptions.put("project", "Selenium_101");
+		ltOptions.put("w3c", true);
+		ltOptions.put("plugin", "java-testNG");
+		browserOptions.setCapability("LT:Options", ltOptions);
 
 		String gridURL = "http://" + username + ":" + accessKey + "@hub.lambdatest.com/wd/hub";
 		try {
